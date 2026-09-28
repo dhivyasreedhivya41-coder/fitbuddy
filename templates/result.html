@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Plan</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+        .container {
+            max-width: 900px; margin: auto; background: white;
+            padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1, h2 { color: #ff6600; }
+        pre {
+            background: #eee; padding: 15px; border-radius: 8px;
+            white-space: pre-wrap; font-family: 'Courier New', monospace;
+            font-size: 14px; line-height: 1.5;
+        }
+        textarea { width: 100%; padding: 10px; border-radius: 5px; box-sizing: border-box; }
+        input[type="number"] { padding: 10px; width: 100%; margin: 8px 0; box-sizing: border-box; }
+        button {
+            background: #ff6600; color: white; padding: 12px 25px;
+            border: none; border-radius: 5px; cursor: pointer; font-size: 15px;
+        }
+        button:hover { background: #e05500; }
+        .info-box {
+            background: #fff3e6; padding: 15px; border-left: 4px solid #ff6600;
+            border-radius: 5px; margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Personalized Workout Plan</h1>
+
+        {% if username %}
+            <div class="info-box">
+                <h2>User Information</h2>
+                <p><b>Name:</b> {{ username }} | <b>ID:</b> {{ user_id }} | <b>Age:</b> {{ age }} | <b>Weight:</b> {{ weight }} kg</p>
+                <p><b>Goal:</b> {{ goal }} | <b>Intensity:</b> {{ intensity }}</p>
+            </div>
+        {% endif %}
+
+        <h2>📋 Workout Plan</h2>
+        <pre>{{ workout_plan }}</pre>
+
+        <h2>🥗 Nutrition Tip</h2>
+        <pre>{{ nutrition_tip }}</pre>
+
+        <h2>✏️ Submit Feedback</h2>
+        <form action="/submit-feedback" method="post">
+            <input type="number" name="user_id" placeholder="Your User ID" required>
+            <textarea name="feedback" rows="4" placeholder="E.g., Add more cardio on Day 3..." required></textarea>
+            <br><br>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+</body>
+</html>

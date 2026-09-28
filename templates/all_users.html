@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Users</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f4f4f4; }
+        h1 { color: #ff6600; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; vertical-align: top; }
+        th { background: #ff6600; color: white; }
+        pre {
+            white-space: pre-wrap; max-width: 400px;
+            font-size: 12px; background: #f9f9f9; padding: 10px; border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>👥 FitBuddy - All Users & Workout Plans</h1>
+    <table>
+        <tr>
+            <th>ID</th><th>Name</th><th>Age</th><th>Weight</th>
+            <th>Goal</th><th>Intensity</th>
+            <th>Original Plan</th><th>Updated Plan</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.weight }}</td>
+            <td>{{ user.goal }}</td>
+            <td>{{ user.intensity }}</td>
+            <td><pre>{{ user.original_plan }}</pre></td>
+            <td><pre>{{ user.updated_plan }}</pre></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
